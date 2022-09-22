@@ -6,7 +6,23 @@
 #Variables
 \*------------------------------------*/
 
-:root {}
+@font-face{
+    font-family: "Inter Web";
+    src: url("../fonts/Inter-Regular.woff2") format("woff2");
+    font-weight: 400;
+}
+@font-face {
+    font-family: "Inter Web";
+    src: url("../fonts/Inter-SemiBold.woff2") format("woff2");
+    font-weight: 700;
+}
+
+:root {
+    accent-color: #3385FF;
+    --global-color-alpha-light: #4F95FF;
+    --global-color-alpha: #3385FF;
+    --global-color-alpha-dark: #2E77E6;
+}
 
 /* CSS variables here */
 
@@ -23,12 +39,12 @@
 html {
     font-size: 16px;
     line-height: 1.5;
-    font-family: Helvetica, arial, sans-serif;
-    color: grey;
+    font-family: "Inter Web", Helvetica, arial, sans-serif;
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: white;
+    color: #20223a;
+    background-color: #F5F6FA;
 }
 
 *,
@@ -51,7 +67,7 @@ html {
 }
 
 ::selection {
-    background: HotPink;
+    background: #3385FF;
     color: white;
     text-shadow: none;
 }
@@ -156,20 +172,24 @@ hr {
 }
 
 a {
-    color: HotPink;
+    color: #3385FF;
     transition: all .1s ease-in-out;
 }
 
 a:visited,
 a:active {
-    color: HotPink;
+    color: var(--global-color-alpha);
 }
 
 a:hover,
 a:focus {
-    color: DeepPink;
+    color: var(--global-color-alpha-light);
 }
 
+label,
+input{
+    display: block;
+}
 /*------------------------------------*\
 #OBJECTS
 \*------------------------------------*/
@@ -187,6 +207,9 @@ a:focus {
 
 .o-row--login {
     /* stuff here to align the card */
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
 }
 
 /* size modifiers */
@@ -426,6 +449,27 @@ a:focus {
 #COMPONENTS
 \*------------------------------------*/
 
+.c-logo {
+    display: flex;
+    height: 24px;
+    justify-content: center;
+}
+
+.c-logo__symbol{
+    height: 100%;
+}
+
+.c-logo__path-1 {
+    fill: #20223a;
+}
+
+.c-logo__path-2 {
+    fill: #3385ff;
+}
+
+.c-logo__path-3 {
+    fill: #1b4168;
+}
 /*
     Component: Logo
     ---
@@ -437,12 +481,45 @@ a:focus {
     ---
     Card with box shadow
 */
+.c-card{
+    background-color: white;
+    border-radius: 4px;
+    border-width: 1px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+.c-card__body{
+    padding: 24px 48px ;
+}
+
+.c-card__title{
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 24px;
+    display: flex;
+    height: 24px;
+    justify-content: center;
+    padding-top: 48px;	
+}
+
+.c-card__footer{
+    padding: 24px 24px ;
+    display: flex;
+    height: 24px;
+    justify-content: center;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    padding-bottom: 48px;
+}
 
 /*
     Component: Forms
     ---
     Everything form related here
 */
+.c-form-field--option{
+    display: flex;
+    gap: 8px;
+}
 
 /*
     Component: Input
@@ -450,9 +527,25 @@ a:focus {
     Class to put on all input="text" like form inputs
 */
 
-.c-input {}
+.c-input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-width: 1px;
+    width: 100%;
+    border-style: solid;
+    border-color: #e2e3e7;
+    border-radius: 3px;
+    font-family: "Inter Web";
+    padding: 11px 16px;
+    line-height: 21px;
+    outline: none;
+}
 
-.c-input:focus {}
+.c-input:focus {
+    border-color: #3385ff;
+    box-shadow: 0 0 0 3px rgba(51, 133, 255, 0.3);
+}
 
 /*
     Component: Label
@@ -460,7 +553,16 @@ a:focus {
     Class to put on all form labels
 */
 
-.c-label {}
+.c-label {
+    font-size: 14px;
+    line-height: 16px;
+    margin-bottom: 8px;
+    color: #606274;
+}
+.c-label {
+    margin-bottom: 0px;
+    margin-left: 8px;
+}
 
 /* If a input is focused within the form-field class change te color of the label */
 
@@ -472,15 +574,41 @@ a:focus {
     Class to put on form buttons or links
 */
 
-.c-button {}
+.c-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-width: 1px;
+    width: 100%;
+    border-style: solid;
+    font-family: "Inter Web";
+    background-color: #3385FF;
+    border-color: #2E77E6;
+    color: white;
+    border-radius: 3px;
+    padding: 11px 16px;
+    line-height: 21px;
+    outline: none;
+}
 
-.c-button:hover {}
+.c-button:hover {
+    background-color: #4F95FF;
+    border-color: #2E77E6;
+}
 
-.c-button:focus {}
+.c-button:focus {
+    background-color: #3385FF;
+    border-color: #2E77E6;
+    box-shadow: 0 0 0 3px rgba(51, 133, 255, 0.3);
+}
 
-.c-button:active {}
+.c-button:active {
+    background-color: #2E77E6;
+    border-color: #2E77E6;
+}
 
 .c-button--block {}
+
 
 /*------------------------------------*\
 #UTILITIES
@@ -834,6 +962,11 @@ a:focus {
     These examples override the primary ('mobile first') styles.
     USE THEM INLINE!
 */
+.example {
+    --example-color: coral;
+    background-color: var(--example-color);
+    border-color: var(--example-color);
+}
 
 /* Extra small devices (portrait phones, less than 576px)
 No media query since this is the default in mobile first design
